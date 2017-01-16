@@ -1,0 +1,42 @@
+# read config file from particular path
+
+# content of application.conf -
+
+config {
+  mysql {
+    host ="localhost"
+    port = 6478
+    username = "root"
+    password = "root"
+    dbname = "db1"
+
+  }
+}
+
+# Scala code - 
+
+import com.typesafe.config.ConfigFactory
+import java.io.File
+
+
+class LoadConfig {
+val filePath = "/home/user/ScalaProjects/helloWorld/conf/application.conf"
+val config = ConfigFactory.parseFile(new File(filePath))
+val mysqlConfig = config.getConfig("config.mysql")
+val Host = esConfig.getString("host")
+val Port = esConfig.getInt("port")
+val dbName = esConfig.getString("dbname")
+val userName = esConfig.getString("username")
+val password = esConfig.getString("password")
+
+
+print(s"Host: $Host")
+println(s"Port: $Port")
+println(s"dbName: $dbName")
+println(s"userName: $userName")
+println(s"password: $password")
+
+}
+
+ 
+ 
